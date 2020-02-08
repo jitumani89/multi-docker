@@ -18,3 +18,17 @@ after_success:
     - docker push jitumani89docker/multi-nginx
     - docker push jitumani89docker/multi-server
     - docker push jitumani89docker/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-east-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucket-name: elasticbeanstalk-us-east-2-905752280494
+    bucket-path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
